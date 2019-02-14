@@ -5,6 +5,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // Third party imports
 import { NgbDateAdapter, NgbTimeAdapter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Toastr, TOASTR_TOKEN } from './services/toastr.service';
+const toastr: Toastr = window['toastr'];
 
 import { EnsureModuleLoadedOnceGuard } from './ensure-module-loaded-once.guard';
 import { AddHeaderInterceptor } from './interceptors/add-header.interceptor';
@@ -24,7 +26,8 @@ import { FooterComponent } from './footer/footer.component';
       multi: true,
     },
     { provide: NgbDateAdapter, useClass: DateStringAdapterService },
-    { provide: NgbTimeAdapter, useClass: TimeStringAdapterService }
+    { provide: NgbTimeAdapter, useClass: TimeStringAdapterService },
+    { provide: TOASTR_TOKEN, useValue: toastr}
   ] // these should be singleton
 })
 export class CoreModule extends EnsureModuleLoadedOnceGuard {

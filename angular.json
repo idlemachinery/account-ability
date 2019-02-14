@@ -23,10 +23,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "src/css/bootstrap.cyborg.min.css"
+              "src/css/bootstrap.cyborg.min.css",
+              "node_modules/toastr/build/toastr.min.css",
+              "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/toastr/build/toastr.min.js"
+            ]
           },
           "configurations": {
             "production": {

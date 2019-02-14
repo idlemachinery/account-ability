@@ -3,6 +3,7 @@ export interface Contract {
   taskName: string;
   owner: string;
   createdDateTime: Date;
+  updatedDateTime: Date;
   expectedDate: string;
   expectedTime: string;
   status: string;

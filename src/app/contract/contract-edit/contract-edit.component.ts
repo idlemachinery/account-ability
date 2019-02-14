@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation, Inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { TOASTR_TOKEN, Toastr } from 'src/app/core/services/toastr.service';
 
 import { Contract, ContractResolved } from 'src/app/shared/interfaces';
 import { DataService } from 'src/app/core/services/data.service';
@@ -14,16 +15,14 @@ import { DataService } from 'src/app/core/services/data.service';
 export class ContractEditComponent implements OnInit {
   pageTitle = 'Edit';
   errorMessage: string;
+  private currentContract: Contract;
+  private originalContract: Contract;
   private dataIsValid: { [key: string]: boolean } = {};
   @ViewChild('deactivateModal') deactivateModal: any;
 
   get isDirty(): boolean {
     return JSON.stringify(this.originalContract) !== JSON.stringify(this.currentContract);
   }
-
-  private currentContract: Contract;
-  private originalContract: Contract;
-
   get contract(): Contract {
     return this.currentContract;
   }
@@ -37,7 +36,8 @@ export class ContractEditComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private api: DataService,
-    private modal: NgbModal
+    private modal: NgbModal,
+    @Inject(TOASTR_TOKEN) private toastr: Toastr
   ) {}
 
   ngOnInit() {
@@ -78,11 +78,12 @@ export class ContractEditComponent implements OnInit {
     this.originalContract = null;
   }
 
-  save(): void {
+  save(close = false): void {
     if (this.isValid()) {
+      this.contract.updatedDateTime = new Date();
       this.api.saveContract(this.contract).subscribe(
         data => {
-          this.onSaveComplete();
+          this.onSaveComplete(close);
         },
         (error: any) => (this.errorMessage = <any>error)
       );
@@ -91,10 +92,15 @@ export class ContractEditComponent implements OnInit {
     }
   }
 
-  onSaveComplete(): void {
-    // Navigate back to the product list
-    this.reset();
-    this.router.navigate(['/contracts']);
+  onSaveComplete(close: boolean): void {
+    this.toastr.success('Contract Saved');
+    if (close === true) {
+      // Navigate back to the contract list
+      this.reset();
+      this.router.navigate(['/contracts']);
+    } else {
+      this.contract = this.currentContract;
+    }
   }
 
   validate(): void {

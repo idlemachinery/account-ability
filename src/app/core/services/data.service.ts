@@ -89,6 +89,7 @@ export class DataService {
       taskName: '',
       owner: '',
       createdDateTime: new Date(),
+      updatedDateTime: null,
       expectedDate: null,
       expectedTime: null,
       closedDate: null,

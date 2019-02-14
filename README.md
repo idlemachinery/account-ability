@@ -13,6 +13,7 @@ The project was generated with [Angular CLI](https://github.com/angular/angular-
 * Modules, components & services developed according to the [Angular Style Guide](https://angular.io/guide/styleguide) and best practices
 * Add-Header HttpInterceptor
 * Preload lazy-loading strategy
+* Toast notifications using [Toastr](https://codeseven.github.io/toastr/)
 * Development APIs using [json-server](https://github.com/typicode/json-server)
 * Styled with [Bootstrap](https://getbootstrap.com/) and fonts by [FontAwesome](https://fontawesome.com/)
 
