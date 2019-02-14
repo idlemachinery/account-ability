@@ -1,0 +1,151 @@
+<form #contractForm="ngForm" novalidate autocomplete="off">
+  <div class="card-body">
+    <h5 class="card-title">Contract Form</h5>
+  </div>
+
+  <!-- Define -->
+  <div class="card-body text-white bg-warning">
+      <p class="card-text">
+        1. <strong>Define</strong> the task in a way that all involved could feel comfortable taking full responsibility.
+      </p>
+  </div>
+  <div class="card-body">
+    <textarea class="form-control"
+              id="defineId"
+              placeholder="Define the task... (required)"
+              rows="3"
+              [(ngModel)]="contract.define"
+              name="define"
+              required
+              [autofocus]
+              #defineVar="ngModel"
+              [ngClass]="{ 'is-invalid': (defineVar.touched ||
+                                          defineVar.dirty ||
+                                          contract.id !== 0) &&
+                                          defineVar.invalid }">
+    </textarea>
+    <div class="invalid-feedback">
+      <span *ngIf="defineVar.errors?.required">
+        Definition is required.
+      </span>
+    </div>
+  </div>
+
+  <!-- Expectations -->
+  <div class="card-body text-white bg-warning">
+    <p class="card-text">
+      2. What are the <strong>Expectations?</strong>
+    </p>
+    <ol type="a">
+      <li>Define what a successful deliverable would look like.</li>
+      <li>How is it measured? (<strong>Metrics</strong>)</li>
+      <li>What format is the final product to be delivered in?</li>
+      <li>Who is this ultimately for?</li>
+    </ol>
+  </div>
+  <div class="card-body">
+    <textarea class="form-control"
+              id="expectationsId"
+              placeholder="Determine the expectations..."
+              rows="5"
+              [(ngModel)]="contract.expectations"
+              name="expectations"
+              #expectationsVar="ngModel">
+    </textarea>
+  </div>
+
+  <!-- Actions -->
+  <div class="card-body text-white bg-warning">
+    <p class="card-text">
+      3. What <strong>Actions</strong> do I need to perform to complete this task or project successfully?
+    </p>
+    <ol type="a">
+      <li>What <strong>Authority</strong> do I need to overcome hurdles?</li>
+      <li>Who do I see if I don't have <strong>Authority</strong>?</li>
+      <li>What tools and resources will I need and which ones do I have?</li>
+      <li>Who can I ask for help if needed?</li>
+    </ol>
+  </div>
+  <div class="card-body">
+    <textarea class="form-control"
+              id="actionsId"
+              placeholder="List the actions..."
+              rows="5"
+              [(ngModel)]="contract.actions"
+              name="actions"
+              #actionsVar="ngModel">
+    </textarea>
+  </div>
+
+  <!-- Timeline -->
+  <div class="card-body text-white bg-warning">
+    <p class="card-text">
+      4. What is the expected <strong>Timeline</strong>?
+    </p>
+    <ol type="a">
+      <li>Exact deadlines should be defined.</li>
+      <li>Is this a single task or multi-phase project?</li>
+      <li>Get a sense of <strong>Urgency</strong>.</li>
+    </ol>
+  </div>
+  <div class="card-body">
+    <textarea class="form-control"
+              id="timelineId"
+              placeholder="Agree on a timeline..."
+              rows="5"
+              [(ngModel)]="contract.timeline"
+              name="timeline"
+              #timelineVar="ngModel">
+    </textarea>
+  </div>
+
+  <!-- Stakes -->
+  <div class="card-body text-white bg-warning">
+    <p class="card-text">
+      5. Know the <strong>Stakes</strong>
+    </p>
+    <ol type="a">
+      <li>How important is this task to the project, company, or individual?</li>
+      <li>What are the benefits and rewards of successfully completing?</li>
+      <li>What are the consequences of coming up short or incomplete?</li>
+      <li>Who is impacted (empathy)?</li>
+      <li>Who decides the stakes?</li>
+    </ol>
+  </div>
+  <div class="card-body">
+    <textarea class="form-control"
+              id="stakesId"
+              placeholder="Determine the stakes..."
+              rows="5"
+              [(ngModel)]="contract.stakes"
+              name="stakes"
+              #stakesVar="ngModel">
+    </textarea>
+  </div>
+
+  <!-- Renegotiation -->
+  <div class="card-body text-white bg-warning">
+    <p class="card-text">
+      6. <strong>Renegotiation</strong> (optional)
+    </p>
+    <ol type="a">
+      <li>What is the renegotiation process?</li>
+      <li>Timing of renegotiation?</li>
+      <li>Who to renegotiate with?</li>
+    </ol>
+  </div>
+  <div class="card-body">
+    <textarea class="form-control"
+              id="renegotiationId"
+              placeholder="Renegotiate if necessary..."
+              rows="5"
+              [(ngModel)]="contract.renegotiation"
+              name="renegotiation"
+              #renegotiationVar="ngModel">
+    </textarea>
+  </div>
+
+  <div class='alert alert-danger'
+         *ngIf='errorMessage'>{{errorMessage}}
+  </div>
+</form>

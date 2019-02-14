@@ -1,0 +1,112 @@
+<div>
+
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">Accountability Contracts</h4>
+    </div>
+    <div class="card-body">
+      <p><ngb-progressbar [value]="totals.ongoing" [max]="totals.total" height="20px"
+            type="info" striped="true" animated="true">
+        (Ongoing) {{totals.ongoing}} of {{totals.total}}
+      </ngb-progressbar></p>
+      <p><ngb-progressbar [value]="totals.complete" [max]="totals.total" height="20px"
+            type="success" striped="true" animated="true">
+        (Complete) {{totals.complete}} of {{totals.total}}
+      </ngb-progressbar></p>
+      <p><ngb-progressbar [value]="totals.incomplete" [max]="totals.total" height="20px"
+            type="danger" striped="true" animated="true">
+        (Incomplete) {{totals.incomplete}} of {{totals.total}}
+      </ngb-progressbar></p>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <h5 class="card-header">
+      Contract List
+      <small class="text-muted">({{collectionSize}})</small>
+      <a [routerLink]="['/contracts', 'new']" class="btn btn-sm btn-primary float-right"
+      [ngbTooltip]="ttContent" placement="left" tooltipClass="custom-tooltip">
+        Add New Contract
+      </a>
+      <ng-template #ttContent>
+        Create a new <strong class="text-primary text-uppercase">contract</strong>
+      </ng-template>
+    </h5>
+    <div class="table-responsive-lg">
+      <table class="table table-striped table-hover">
+        <thead>
+          <th class="sm">#</th>
+          <th class="md" sortable="createdDateTime" (sort)="onSort($event)">Date</th>
+          <th sortable="taskName" (sort)="onSort($event)">Task</th>
+          <th sortable="owner" (sort)="onSort($event)">Owner</th>
+          <th class="md" sortable="status" (sort)="onSort($event)">Status</th>
+          <th class="md" sortable="quality" (sort)="onSort($event)">Quality</th>
+          <th class="lg"></th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let contract of contracts">
+            <th>{{contract.id}}</th>
+            <td>{{contract.createdDateTime | shortDate}}</td>
+            <td>{{contract.taskName}}</td>
+            <td>{{contract.owner}}</td>
+            <td><span
+              class="badge badge-pill"
+              [ngClass]="{ 'badge-primary': contract.status === 'ongoing', 'badge-success': contract.status === 'complete', 'badge-danger': contract.status === 'incomplete' }"
+              >{{contract.status}}</span></td>
+            <td>
+              <ngb-rating [(rate)]="contract.quality" max="5" [readonly]="true">
+                <ng-template let-fill="fill" let-index="index">
+                  <span class="star" [class.filled]="fill === 100" [class.bad]="index < 2">&#9733;</span>
+                </ng-template>
+              </ngb-rating>
+            </td>
+            <td>
+              <a class="btn btn-info btn-sm mr-2" [routerLink]="['/contracts', contract.id]" >Edit</a>
+              <button class="btn btn-danger btn-sm" (click)="deleteContract(contract.id, deleteModal)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer">
+
+      <!-- <div class="row">
+        <div class="col">
+          <ngb-pagination [collectionSize]="collectionSize" boundaryLinks="true"
+            [pageSize]="pageSize" maxSize="5" rotate="true"
+            [(page)]="currPage" (pageChange)="refreshGrid()"></ngb-pagination>
+        </div>
+      </div> -->
+
+      <div class="d-flex justify-content-between p-2">
+        <ngb-pagination [collectionSize]="collectionSize" maxSize="5" rotate="true" [(page)]="page" [pageSize]="pageSize">
+        </ngb-pagination>
+
+        <select class="custom-select-inverse custom-select" style="width: auto" [(ngModel)]="pageSize">
+          <option [ngValue]="5">5 items per page</option>
+          <option [ngValue]="10">10 items per page</option>
+          <option [ngValue]="25">25 items per page</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="errorMessage"
+     class="alert alert-danger">
+    Error: {{ errorMessage }}
+  </div>
+</div>
+
+<ng-template #deleteModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Delete?</h4>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure you want to delete?</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success" (click)="modal.close()">Yes (Delete)</button>
+    <button class="btn btn-danger" (click)="modal.dismiss()">No</button>
+  </div>
+</ng-template>

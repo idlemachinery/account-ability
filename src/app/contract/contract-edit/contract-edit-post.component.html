@@ -1,0 +1,94 @@
+<form #contractForm="ngForm" novalidate autocomplete="off">
+  <div class="card-body">
+    <h5 class="card-title">Post Analysis</h5>
+  </div>
+  <div class="card-body">
+
+    <!-- Closed Date -->
+    <div class="form-group row">
+      <label class="col-form-label col-md-2"
+             for="closedDateId">Closed Date</label>
+      <div class="col-md-4">
+        <div class="input-group">
+          <input class="form-control"
+                 id="closedDateId"
+                 placeholder="yyyy-mm-dd"
+                 [(ngModel)]="contract.closedDate"
+                 name="closedDate"
+                 #closedDateVar="ngbDatepicker"
+                 ngbDatepicker
+                 [autofocus] >
+          <div class="input-group-append">
+            <button class="btn btn-primary"
+                    type="button"
+                    (click)="closedDateVar.toggle()" >
+              <i class="fa fa-calendar fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Closed Time -->
+    <div class="form-group row">
+      <label class="col-form-label col-md-2"
+             for="closedTimeId">Closed Time</label>
+      <div class="col-md-4">
+        <ngb-timepicker id="closedTimeId"
+                        [(ngModel)]="contract.closedTime"
+                        name="closedTime"
+                        [meridian]="true"
+                        [seconds]="false"
+                        [spinners]="true"
+                        [minuteStep]="15"></ngb-timepicker>
+      </div>
+    </div>
+
+    <!-- Rating -->
+    <div class="form-group row">
+      <label class="col-form-label col-md-2"
+             for="qualityId">Quality</label>
+      <div class="col-md-8 m-t-sm">
+        <ngb-rating id="qualityId"
+                    [(rate)]="contract.quality"
+                    max="5"
+                    (rateChange)="changeRate()"
+                    #qualityVar>
+          <ng-template let-fill="fill"
+                       let-index="index">
+            <span class="star"
+                  [class.filled]="fill === 100"
+                  [class.bad]="index < 2">&#9733;</span>
+          </ng-template>
+        </ngb-rating>
+        <span>
+          <button class="btn btn-sm btn-outline-primary mr-2 ml-2"
+                  (click)="clearQuality()">
+            Clear
+          </button>
+        </span>
+      </div>
+    </div>
+
+    <!-- Lessons Learned -->
+    <div class="form-group row">
+      <label class="col-form-label col-md-2"
+             for="lessonsId">Lessons Learned</label>
+      <div class="col-md-10 m-t-sm">
+        <textarea class="form-control"
+                  id="lessonsId"
+                  placeholder="What lessons can be learned from this experience?"
+                  rows="8"
+                  [(ngModel)]="contract.lessons"
+                  name="lessons"
+                  #lessonsVar="ngModel" >
+        </textarea>
+      </div>
+    </div>
+
+  </div>
+
+  <div class='alert alert-danger'
+       *ngIf='errorMessage'>{{errorMessage}}
+  </div>
+</form>

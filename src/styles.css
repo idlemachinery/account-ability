@@ -1,0 +1,108 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~font-awesome/css/font-awesome.min.css";
+
+body {
+  padding-top: 92px;
+  height: 100%;
+}
+
+.body-content {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.applicationHost {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by its height */
+  margin: 0 auto -60px;
+  /* Pad bottom by footer height */
+  /* padding: 0 0 90px; */
+}
+
+th[sortable] {
+  cursor: pointer;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+th[sortable].asc:before,
+th[sortable].desc:before {
+  content: '';
+  display: block;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMTZEaa/1AAACo0lEQVR4XuXaTatNcRzF8ev56QUYMWMgSTKSUsqMlAEpE4kSyYwYCjNloiQjExMTNybCe1Beg2Ri4PnpWD/urt3pu+/vv/fZ60z+qz7da9lrn3O2y903Z2EymVQNy5pgWRMsa4JlTbCsCZY1wbImWNYEy5pgOQd75aV8l6/yTHYIHWuFpdkh+SLT+Sj7hDY2WBodkfhT78onOSi0tcDS5IT8lCzf5LDQOUaHpcFp+S2liQt1XOhco8JyZBdlSOKCxYWjc44GyxFdkVkTF5DOPQosR7BCbshYuSr0ODPDckbx4u/I2LkpcW56zMGwnMFKuS+u3JV4DHrsQbAcaLU8Enceyiqh59AblgOslScyrzyWNULPpRcse9ogz2XeeSrrhZ5TMSx72CSvpTS3lj4ul9tLH0vyQjYKPbciWPbwQEpzTWKTJY65/v/TotyT9nPqBctCceV/SEkuSbPL0hx3+d+v8sTPDuuk2fWCZaEtkuWPnJH2Lkv72HMS58iyWdq7YlgWim9FH6Qrv+SkTO+yTB9/SuJcXXkng+8NsOzhglDiZ/6jQpsstDkmXX/dzgptimDZQ9yanpf2V8Ib2S90fMhCm3BA3kqT9zLTiw9YDhB3gdsl/l3I7tez0KYR594q22SUu0EszbLQxgZLsyy0scHSLAttbLA0y0IbGyzNstDGBkuzLLSxwdIsC21ssDTLQhsbLM2y0MYGS7MstLHB0iwLbWywNMtCGxsszbLQxgZLsyy0scHSLAttbLA0y0IbGyzNstDGBkuzLLSxwdIsC21ssDRb7l1i8Xu0scHS7JV0Jf6vjzY2WJrtkc8ynXiP4G6hjQ2Wc7BL4u2xcSHihS/KTqFjrbCsCZY1wbImWNYEy5pgWRMsa4JlTbCsCZb1mCz8BWU5GQsRzlfsAAAAAElFTkSuQmCC)
+    0 0/22px no-repeat;
+  width: 22px;
+  height: 22px;
+  float: left;
+  margin-left: -22px;
+  color: white;
+}
+
+th[sortable].desc:before {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+}
+
+button.calendar,
+button.calendar:active {
+  width: 2.75rem;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAcCAYAAAAEN20fAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEUSURBVEiJ7ZQxToVAEIY/YCHGxN6XGOIpnpaEsBSeQC9ArZbm9TZ6ADyBNzAhQGGl8Riv4BLAWAgmkpBYkH1b8FWT2WK/zJ8ZJ4qiI6XUI3ANnGKWBnht2/ZBDRK3hgVGNsCd7/ui+JkEIrKtqurLpEWaphd933+IyI3LEIdpCYCiKD6HcuOa/nwOa0ScJEnk0BJg0UTUWJRl6RxCYEzEmomsIlPU3IPW+grIAbquy+q6fluy/28RIBeRMwDXdXMgXLj/B2uimRXpui4D9sBeRLKl+1N+L+t6RwbWrZliTTTr1oxYtzVWiTQAcRxvTX+eJMnlUDaO1vpZRO5NS0x48sIwfPc87xg4B04MCzQi8hIEwe4bl1DnFMCN2zsAAAAASUVORK5CYII=) !important;
+  background-repeat: no-repeat;
+  background-size: 23px;
+  background-position: center;
+}
+
+.star {
+  color: #c7fcc7;
+}
+.filled {
+  color: #5cb85c;
+}
+.bad {
+  color: #deb0b0;
+}
+.filled.bad {
+  color: #ff1e1e;
+}
+
+.custom-select-inverse {
+  background-color: #282828 !important;
+  color: #fff !important;
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23222' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 1rem center/8px 10px;
+  border: 1px solid rgba(255,255,255,0.05) !important
+}
+
+.custom-select-inverse:focus::-ms-value {
+  background-color: #fdc4c4 !important;
+  color: #fff !important
+}
+
+.custom-select:disabled {
+  background-color: #555 !important;
+  color: #e9ecef !important
+}
+
+.page-link {
+  border: 1px solid rgba(255,255,255,0.05) !important
+}
+
+th.sm {
+  width:75px;
+}
+
+th.md {
+  width:100px;
+}
+
+th.lg {
+  width:125px;
+}
+
+.btn-fw {
+  width: 100px;
+}

@@ -1,0 +1,283 @@
+<div>
+  <div class="jumbotron">
+    <div class="row">
+
+      <div class="col-md-6 mb-3">
+        <h1 class="display-4">Account-Ability</h1>
+        <hr>
+        <p>
+          This application was developed to help you track and measure your accountability by using contracts.
+        </p>
+        <p>
+          The concepts are based on the Pluralsight course <a href="https://app.pluralsight.com/library/courses/accountability-five-steps" target="_blank">"Accountability in 5 Steps"</a> by Ron Schindler. Angular website uses <a href="https://ng-bootstrap.github.io/#/" target="_blank">ng-bootstrap</a> and is based on the Pluralsight course <a href="https://app.pluralsight.com/library/courses/ng-bootstrap-playbook/" target="_blank">"ng-bootstrap Playbook"</a> by Steve Michelotti. Cyborg Bootstrap theme downloaded from <a href="https://bootswatch.com/cyborg/" target="_blank">Bootswatch</a>.
+        </p>
+
+        <div class="btn-group">
+          <button class="btn btn-primary">Navigation</button>
+          <div class="btn-group" ngbDropdown>
+            <button class="btn btn-primary dropdown-toggle-split" ngbDropdownToggle></button>
+            <div ngbDropdownMenu>
+              <button class="dropdown-item" [routerLink]="['/']">Home</button>
+              <button class="dropdown-item" [routerLink]="['/contracts']">Contracts</button>
+              <button class="dropdown-item" [routerLink]="['/admin']">Admin</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="">
+          <div class="mainImageContainer mt-3">
+            <ngb-carousel [pauseOnHover]="true"
+                          [showNavigationIndicators]="true"
+                          [showNavigationArrows]="true"
+                          #imgCarousel>
+              <ng-template ngbSlide *ngFor="let img of images">
+                <img [src]="img.src">
+                <div class="carousel-caption">
+                  <h4>{{img.title}}</h4>
+                  <p>{{img.subtitle}}</p>
+                </div>
+              </ng-template>
+            </ngb-carousel>
+          </div>
+        </div>
+        <div class="">
+            <button class="btn btn-outline-primary btn-fw mt-sm-2 mr-sm-2"
+                    (click)="prev()">
+              Previous
+            </button>
+            <button class="btn btn-outline-primary btn-fw mt-sm-2"
+                    (click)="next()">
+              Next
+            </button>
+          </div>
+      </div>
+    </div>
+
+  </div>
+
+  <h4>Learning Check</h4>
+  <ngb-accordion type="light"
+                 closeOthers="true"
+                 activeIds="panel-1"
+                 #acc="ngbAccordion"
+                 (panelChange)="beforeChange($event)">
+
+      <ngb-panel id="panel-1">
+        <ng-template ngbPanelTitle>
+          <p class="font-weight-bold">Defining Accountability</p>
+        </ng-template>
+        <ng-template ngbPanelContent>
+          <blockquote class="blockquote">
+            <h5><b>Committing</b> to doing something with a <b>clear understanding</b> of <b>expectations, deciding to take responsibility,</b> becoming <b>empowered</b> to overcome hurdles, and <b>accepting of consequences</b> and results to <b>learn and correct</b> future behavior.</h5>
+          </blockquote>
+          <p class="float-right">
+            <button class="btn btn-info btn-fw" (click)="nextButton(1)">Next</button>
+          </p>
+        </ng-template>
+      </ngb-panel>
+
+      <ngb-panel title="Change your mindset" id="panel-2">
+        <ng-template ngbPanelContent>
+          <h5>Definitions that will change mindset</h5>
+          <ul>
+            <li>Accountability is taking action</li>
+            <li>I am personally responsible for my actions and understanding the task</li>
+            <li>I can be accountable for 100% of the pie... so can others</li>
+            <li>I am responsible for holding myself and other accountable</li>
+            <li>I can become empowered to do tasks assigned to me</li>
+            <li>External conditions do not determine my accountability level</li>
+          </ul>
+          <p class="float-right">
+            <button class="btn btn-info btn-fw" (click)="nextButton(2)">Next</button>
+          </p>
+        </ng-template>
+      </ngb-panel>
+
+      <ngb-panel title="Commonly incorrect definitions" id="panel-3">
+        <ng-template ngbPanelContent>
+          <h5>Commonly incorrect definitions:</h5>
+          <ol>
+            <li>One of the biggest mistakes we make when trying to define accountability is to associate it with <b class="text-uppercase">blame</b>.</li>
+            <li>We tend to mathematically explain our portion of accountability as some <b class="text-uppercase">percentage</b> of the pie.</li>
+            <li>Accountability is somehow attached to our <b class="text-uppercase">title</b> or <b class="text-uppercase">salary</b>.</li>
+            <li>I don’t have the <b class="text-uppercase">Tools</b>, <b class="text-uppercase">authority</b> or <b class="text-uppercase">Skills</b> needed to accept a responsible role in accountability.</li>
+          </ol>
+          <p class="float-right">
+            <button class="btn btn-info btn-fw" (click)="nextButton(3)">Next</button>
+          </p>
+        </ng-template>
+      </ngb-panel>
+
+      <ngb-panel title="Committing" id="panel-4">
+        <ng-template ngbPanelContent>
+          <h5>Committing</h5>
+          <ul>
+            <li>What are some things you have committed to in the past?</li>
+            <li>Where you always “All In” or were you sometimes “Half In”?</li>
+            <li>What was the difference?</li>
+            <li>What are the things that help us to commit to something?</li>
+          </ul>
+          <p class="float-right">
+            <button class="btn btn-info btn-fw" (click)="nextButton(4)">Next</button>
+          </p>
+        </ng-template>
+      </ngb-panel>
+
+      <ngb-panel title="Clear Understanding" id="panel-5">
+        <ng-template ngbPanelContent>
+          <h5>Clear Understanding</h5>
+          <ul>
+            <li>Think of a task or even a skill that you totally understood.</li>
+            <li>How did you gain that understanding?</li>
+            <li>How do you feel when you must do something but you don’t
+                really understand how?</li>
+            <li>How can we achieve clear understanding every time?</li>
+          </ul>
+          <p class="float-right">
+            <button class="btn btn-info btn-fw" (click)="nextButton(5)">Next</button>
+          </p>
+        </ng-template>
+      </ngb-panel>
+
+      <ngb-panel title="Expectations" id="panel-6">
+        <ng-template ngbPanelContent>
+          <h5>Expectations</h5>
+          <ul>
+            <li>How would you define Expectations?</li>
+            <li>How much easier is it to have success when we know what is
+                expected?</li>
+            <li>What things are part of expectations?</li>
+            <li>Who defines expectations?</li>
+          </ul>
+          <p class="float-right">
+            <button class="btn btn-info btn-fw" (click)="nextButton(6)">Next</button>
+          </p>
+        </ng-template>
+      </ngb-panel>
+
+      <ngb-panel title="Deciding to Take Responsibility" id="panel-7">
+        <ng-template ngbPanelContent>
+          <h5>Deciding to Take Responsibility</h5>
+          <ul>
+            <li>How is responsibility and accountability different?</li>
+            <li>What makes you feel that you can be responsible?</li>
+            <li>If you don’t feel responsible for outcomes, will you be willing
+                to stand up and be accountable?</li>
+            <li>How will taking responsibility make me more accountable?</li>
+          </ul>
+          <p class="float-right">
+            <button class="btn btn-info btn-fw" (click)="nextButton(7)">Next</button>
+          </p>
+        </ng-template>
+      </ngb-panel>
+
+      <ngb-panel title="Empowerment" id="panel-8">
+        <ng-template ngbPanelContent>
+          <h5>Empowerment</h5>
+          <ul>
+            <li>Have you been asked to do something but felt as if your
+                hands were tied behind your back?</li>
+            <li>How does commitment and responsibility affect
+                empowerment?</li>
+            <li>What is Self Empowerment?</li>
+          </ul>
+          <p class="float-right">
+            <button class="btn btn-info btn-fw" (click)="nextButton(8)">Next</button>
+          </p>
+        </ng-template>
+      </ngb-panel>
+
+      <ngb-panel title="Accepting Consequences and Results" id="panel-9">
+        <ng-template ngbPanelContent>
+          <h5>Accepting Consequences and Results</h5>
+          <ul>
+            <li>What is our first reaction to failure?</li>
+            <li>When do we want to learn about the consequences for our
+                results?</li>
+            <li>How would knowing the consequences up front help us be
+                accountable?</li>
+          </ul>
+          <p class="float-right">
+            <button class="btn btn-info btn-fw" (click)="nextButton(9)">Next</button>
+          </p>
+        </ng-template>
+      </ngb-panel>
+
+      <ngb-panel title="Learning" id="panel-10">
+        <ng-template ngbPanelContent>
+          <h5>Learning</h5>
+          <ul>
+            <li>How can we turn a failure into a success?</li>
+            <li>Have you ever tracked failures and successes?</li>
+            <li>What can we learn from every consequence?</li>
+            <li>What can we do with all of this knowledge?</li>
+          </ul>
+          <p class="float-right">
+            <button class="btn btn-info btn-fw" (click)="nextButton(10)">Next</button>
+          </p>
+        </ng-template>
+      </ngb-panel>
+
+      <ngb-panel title="Review" id="panel-11">
+        <ng-template ngbPanelContent>
+          <div class="row">
+            <div class="col-lg-4 col-md-6">
+              <div class="card text-white bg-primary mb-3 text-center" style="max-width: 20rem;min-height:150px;">
+                <div class="card-body">
+                  <h4 class="card-title">Commitment</h4>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="card text-white bg-warning mb-3 text-center" style="max-width: 20rem;min-height:150px;">
+                <div class="card-body">
+                  <h4 class="card-title">Understanding</h4>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="card text-white bg-success mb-3 text-center" style="max-width: 20rem;min-height:150px;">
+                <div class="card-body">
+                  <h4 class="card-title">Expectations</h4>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="card text-white bg-danger mb-3 text-center" style="max-width: 20rem;min-height:150px;">
+                <div class="card-body">
+                  <h4 class="card-title">Buy into Responsibility</h4>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="card text-white bg-secondary mb-3 text-center" style="max-width: 20rem;min-height:150px;">
+                <div class="card-body">
+                  <h4 class="card-title">Self Empowerment</h4>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="card text-white bg-info mb-3 text-center" style="max-width: 20rem;min-height:150px;">
+                <div class="card-body">
+                  <h4 class="card-title">Learning from Results</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="float-right">
+            <button class="btn btn-info btn-fw" (click)="nextButton(11)">Next</button>
+          </p>
+        </ng-template>
+      </ngb-panel>
+
+      <ngb-panel title="Go to work" id="panel-12">
+        <ng-template ngbPanelContent>
+          <p>We hope you enjoyed defining accountability.</p>
+          <h5>Now <b class="text-uppercase text-primary">go to work!</b></h5>
+        </ng-template>
+      </ngb-panel>
+    </ngb-accordion>
+
+</div>

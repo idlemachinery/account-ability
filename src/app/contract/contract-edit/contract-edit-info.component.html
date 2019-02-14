@@ -1,0 +1,139 @@
+<form #contractForm="ngForm" novalidate autocomplete="off">
+  <div class="card-body">
+    <h5 class="card-title">Basic Contract Info</h5>
+  </div>
+  <div class="card-body">
+
+    <!-- Status -->
+    <div class="form-group row">
+      <label class="col-form-label col-md-2"
+              for="statusId">Status</label>
+      <div class="col-md-8">
+        <div class="btn-group btn-group-toggle"
+             id="statusId"
+             ngbRadioGroup
+             [(ngModel)]="contract.status"
+             name="status"
+             #statusVar="ngModel">
+          <label ngbButtonLabel class="btn-primary"><input ngbButton type="radio" value="ongoing">Ongoing</label>
+          <label ngbButtonLabel class="btn-primary"><input ngbButton type="radio" value="complete">Complete</label>
+          <label ngbButtonLabel class="btn-primary"><input ngbButton type="radio" value="incomplete">Incomplete</label>
+        </div>
+
+        <button class="btn btn-outline-info btn-sm ml-sm-2" [popoverTitle]="popTitle"
+          [ngbPopover]="popContent" placement="right" popoverClass="custom-popover"
+          triggers="mouseenter:mouseleave" #pop="ngbPopover">?</button>
+        <ng-template #popTitle>
+          <h4>Contract Status</h4>
+        </ng-template>
+        <ng-template #popContent>
+          These buttons specify the status of <strong class="text-primary text-uppercase">contract</strong>:
+          <ul>
+            <li><strong class="text-primary">Ongoing</strong> - The contract is still active.</li>
+            <li><strong class="text-success">Complete</strong> - The contract has been finished successfully.</li>
+            <li><strong class="text-danger">Incomplete</strong> - The contract has been closed without completion.</li>
+          </ul>
+        </ng-template>
+      </div>
+    </div>
+
+    <!-- Task Name -->
+    <div class="form-group row">
+      <label class="col-form-label col-md-2"
+             for="taskNameId">Task Name</label>
+      <div class="col-md-8">
+        <input class="form-control"
+               id="taskNameId"
+               type="text"
+               placeholder="Name (required)"
+               required
+               [autofocus]
+               minlength="3"
+               [(ngModel)]="contract.taskName"
+               name="taskname"
+               #tasknameVar="ngModel"
+               [ngClass]="{ 'is-invalid': (tasknameVar.touched ||
+                                           tasknameVar.dirty ||
+                                           contract.id !== 0) &&
+                                           !tasknameVar.valid }" />
+        <div class="invalid-feedback">
+          <span *ngIf="tasknameVar.errors?.required">
+            Task Name is required.
+          </span>
+          <span *ngIf="tasknameVar.errors?.minlength">
+            Task Name must be at least three characters.
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Owner -->
+    <div class="form-group row">
+      <label class="col-form-label col-md-2"
+             for="ownerId">Owner</label>
+      <div class="col-md-8">
+        <input class="form-control"
+               id="ownerId"
+               type="text"
+               placeholder="Owner (required)"
+               required
+               [(ngModel)]="contract.owner"
+               name="owner"
+               #ownerVar="ngModel"
+               [ngClass]="{ 'is-invalid': (ownerVar.touched ||
+                                           ownerVar.dirty ||
+                                           contract.id !== 0) &&
+                                           !ownerVar.valid }" />
+        <div class="invalid-feedback">
+            <span *ngIf="ownerVar.errors?.required">
+              Owner is required.
+            </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expected Date -->
+    <div class="form-group row">
+      <label class="col-form-label col-md-2"
+             for="expectedDateId">Expected Date</label>
+      <div class="col-md-4">
+        <div class="input-group">
+          <input class="form-control"
+                 id="expectedDateId"
+                 placeholder="yyyy-mm-dd"
+                 [(ngModel)]="contract.expectedDate"
+                 name="expectedDate"
+                 #expectedDateVar="ngbDatepicker"
+                 ngbDatepicker />
+          <div class="input-group-append">
+            <button class="btn btn-primary"
+                    type="button"
+                    (click)="expectedDateVar.toggle()">
+              <i class="fa fa-calendar fa-fw"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expected Time -->
+    <div class="form-group row">
+      <label class="col-form-label col-md-2"
+             for="expectedTimeId">Expected Time</label>
+      <div class="col-md-4">
+        <ngb-timepicker id="expectedTimeId"
+                        [(ngModel)]="contract.expectedTime"
+                        name="expectedTime"
+                        [meridian]="true"
+                        [seconds]="false"
+                        [spinners]="true"
+                        [minuteStep]="15"></ngb-timepicker>
+      </div>
+    </div>
+
+  </div>
+
+  <div class='alert alert-danger'
+         *ngIf='errorMessage'>{{errorMessage}}
+  </div>
+</form>
