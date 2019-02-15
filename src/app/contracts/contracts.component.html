@@ -47,7 +47,7 @@
         <tbody>
           <tr *ngFor="let contract of contracts">
             <th>{{contract.id}}</th>
-            <td>{{contract.createdDateTime | shortDate}}</td>
+            <td>{{contract.createdDateTime | date:'yyyy-MM-dd' }}</td>
             <td>{{contract.taskName}}</td>
             <td>{{contract.owner}}</td>
             <td><span

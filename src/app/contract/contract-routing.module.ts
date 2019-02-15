@@ -18,8 +18,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'info', pathMatch: 'full' },
       { path: 'info', component: ContractEditInfoComponent },
       { path: 'form', component: ContractEditFormComponent },
-      { path: 'post', component: ContractEditPostComponent },
-      // { path: 'tags', component: ContractEditTagsComponent }
+      { path: 'post', component: ContractEditPostComponent }
     ]
   }
 ];

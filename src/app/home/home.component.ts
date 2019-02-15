@@ -4,7 +4,8 @@ import { DataService } from '../core/services/data.service';
 import { NgbAccordion } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
   public images = [];
@@ -12,7 +13,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('imgCarousel') imgCarousel: any;
   @ViewChild('acc') acc: NgbAccordion;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService) {}
 
   ngOnInit() {
     this.images = this.dataService.getImages();

@@ -47,10 +47,10 @@
         </div>
         <hr class="my-4">
         <p class="text-center">
-          Created on {{ contract.createdDateTime | fullDate }}
+          Created on {{ contract.createdDateTime | date:'full' }}
           <span *ngIf="contract.updatedDateTime">
             <br/>
-            Updated on {{ contract.updatedDateTime | fullDate }}
+            Updated on {{ contract.updatedDateTime | date:'full' }}
           </span>
         </p>
       </div>
