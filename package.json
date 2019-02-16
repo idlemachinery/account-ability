@@ -2,10 +2,19 @@
   "name": "account-ability",
   "version": "1.1.1",
   "description": "Track and measure accountability by using contracts",
+  "keywords": [
+    "Accountability",
+    "Angular",
+    "Bootstrap"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/idlemachinery/account-ability.git"
   },
+  "bugs": {
+    "url": "https://github.com/idlemachinery/account-ability/issues"
+  },
+  "homepage": "https://github.com/idlemachinery/account-ability#readme",
   "author": "Andrew Miller <idlemachinery@gmail.com> (https://idlemachinery.com/)",
   "license": "MIT",
   "scripts": {

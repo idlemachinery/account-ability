@@ -1,5 +1,7 @@
 # Account-Ability
 
+[![GitHub version](https://badge.fury.io/gh/idlemachinery%2Faccount-ability.svg)](https://badge.fury.io/gh/idlemachinery%2Faccount-ability)
+
 This application was developed to help track and measure accountability by using contracts.
 
 All concepts and quotes are based on the Pluralsight course ["Accountability in 5 Steps"](https://app.pluralsight.com/library/courses/accountability-five-steps) by Ron Schindler. Angular website uses [ng-bootstrap](https://ng-bootstrap.github.io/#/) and is based on the Pluralsight course ["ng-bootstrap Playbook"](https://app.pluralsight.com/library/courses/ng-bootstrap-playbook/) by Steve Michelotti. Cyborg Bootstrap theme downloaded from [Bootswatch](https://bootswatch.com/cyborg/).
